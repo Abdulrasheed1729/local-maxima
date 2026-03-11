@@ -12,19 +12,19 @@ coverImage:
 
 ## Prologue
 
-In this series of blog post we are going to learn about Turing Machines, but before that we need to introduce some concepts of the theory of computation. In this part we introduce finite automata.
+In this part 1 of a series covering the mechanism and background of Turing machines, this blog post covers finite automata and some related concepts in the theory of computation.
 
 :::note
-We are going to do some abstract math, but don't fret I got you covered.
+We're going to do some abstract math, but don't fret — I've got you covered.
 :::
 
 ## Introduction
 
-Have you ever been asked the question, "What is a computer"?. Well, according to the Oxford Advanced Learner's dictionary a computer:
+Have you ever been asked the question, "What is a computer?" Well, according to the Oxford Advanced Learner's Dictionary, a computer is
 
 > an electronic machine that can store, organize and find information, do processes with numbers and other data, and control other machines
 
-Hmm..., that is deep, but I want you to take note of the features, _store, organise, find information, and process_. By design, the real computers we have around us are complex in a way that we cannot directly set up a mathematical theory for them. Instead, we use **computational model** which is a form of idealised computer. In understanding the theory of computation we are going to introduce some models of computer depending on depending on the feature of computer we want to focus on.
+That's deep, but notice the features: store, organize, find information, and process. Real computers are complex in ways that make it hard to set up a precise mathematical theory for them_. By design, the real computers we have around us are complex in a way that we cannot directly set up a mathematical theory for them. Instead, we use **computational model** which is a form of idealised computer. In understanding the theory of computation we are going to introduce some models of computer depending on depending on the feature of computer we want to focus on.
 
 ![A simple computer model](./computer-model.jpg 'A simple computer model')
 
@@ -34,7 +34,7 @@ The simplest of computational model we can have is the _finite automaton (plural
 
 To explain how a finite automaton works, I am going to use the mechanism of the main door at the _African Institute for Mathematical Sciences_ (where I'm currently a student btw) as an example.
 
-Every students has a personal token they scan in order to enter or exit the main building, with the way the door is, we can only have two states _locked_ and _unlocked_. Now, suppose a student **Bongo** is coming from outside he has to scan his token and push the door to enter an the push from the inside to lock the door again, and this is synonymous to another student **Ada** exiting the building (but she has to pull the door to get it into it locked state after scanning her token).
+Every students has a personal token they scan in order to enter or exit the main building, with the way the door is, there are two states, _locked_ and _unlocked_. Now, suppose a student **Bongo** is coming from outside he has to scan his token and push the door to enter an the push from the inside to lock the door again, and this is synonymous to another student **Ada** exiting the building (but she has to pull the door to get it into it locked state after scanning her token).
 
 Now, we can think of the door to take in three inputs:
 
