@@ -1,0 +1,46 @@
+---
+import IconChevronsRight from '~/icons/chevrons-right.svg'
+import type { CollectionEntry } from 'astro:content'
+import { render } from 'astro:content'
+import Tags from '~/components/Tags.astro'
+import PostInfo from '~/components/PostInfo.astro'
+import type { Collation } from '~/types'
+import { TagsGroup } from '~/utils'
+
+interface Props {
+  devlog: CollectionEntry<'devlog'>
+}
+
+const { devlog } = Astro.props
+
+const { remarkPluginFrontmatter } = await render(devlog)
+const description = remarkPluginFrontmatter.description || devlog.data.description
+// let tags: Collation<'devlog'>[] | undefined
+// if (devlog.data.tags && devlog.data.tags.length > 0) {
+//   const tagsGroup = await TagsGroup.build()
+//   tags = tagsGroup.matchMany(devlog.data.tags)
+// }
+const samePage = Astro.url.pathname === `/devlog/${devlog.id}`
+const articleLink = samePage ? `#${devlog.id}` : `/devlog/${devlog.id}`
+---
+
+<article class="w-full py-5 my-1 md:my-4 border-accent/10">
+  <h1 class="mb-3 text-2xl text-heading1 font-semibold">
+    <a href={articleLink}># {devlog.data.title}</a>
+  </h1>
+  <!-- <PostInfo post={devlog} class="mb-3 mt-4" /> -->
+  <!-- {description && <p class="pl-0.5 my-4 text-base/7 text-foreground">{description}</p>} -->
+  <!-- {
+    tags && (
+      <div class="mb-6">
+        <Tags tags={tags} />
+      </div>
+    )
+  } -->
+  <div>
+    <a class="button flex items-center pl-3.5!" href={articleLink}>
+      {samePage ? 'Continue' : 'Read'}
+      <IconChevronsRight class="size-5 ml-2" />
+    </a>
+  </div>
+</article>

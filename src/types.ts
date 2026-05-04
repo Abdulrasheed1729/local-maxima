@@ -173,10 +173,11 @@ export interface SiteConfig {
   socialCardAvatarImage: string
   tags: string[]
   pageSize: number
+  devlogSize: number
   trailingSlashes: boolean
   themes: ThemesConfig
   socialLinks: SocialLinks
   navLinks: NavLink[]
-  giscus: GiscusConfig | undefined,
+  giscus: GiscusConfig | undefined
   characters: Record<string, string>
 }
