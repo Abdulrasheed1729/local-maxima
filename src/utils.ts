@@ -224,15 +224,15 @@ export async function getSortedPosts() {
   return sortedPosts
 }
 
-export async function getSortedDevlogs() {
-  const allPosts = await getCollection('devlog', ({ data }) => {
-    return import.meta.env.PROD ? data.draft !== true : true
-  })
-  const sortedPosts = allPosts.sort((a, b) => {
-    return a.data.published < b.data.published ? -1 : 1
-  })
-  return sortedPosts
-}
+// export async function getSortedDevlogs() {
+//   const allPosts = await getCollection('devlog', ({ data }) => {
+//     return import.meta.env.PROD ? data.draft !== true : true
+//   })
+//   const sortedPosts = allPosts.sort((a, b) => {
+//     return a.data.published < b.data.published ? -1 : 1
+//   })
+//   return sortedPosts
+// }
 
 abstract class PostsCollationGroup implements CollationGroup<'posts'> {
   title: string
@@ -340,12 +340,12 @@ export function getPostSequenceContext(
   return { index, prev, next }
 }
 
-export function getDevlogSequenceContext(
-  post: CollectionEntry<'devlog'>,
-  posts: CollectionEntry<'devlog'>[],
-) {
-  const index = posts.findIndex((p) => p.id === post.id)
-  const prev = index > 0 ? posts[index - 1] : undefined
-  const next = index < posts.length - 1 ? posts[index + 1] : undefined
-  return { index, prev, next }
-}
+// export function getDevlogSequenceContext(
+//   post: CollectionEntry<'devlog'>,
+//   posts: CollectionEntry<'devlog'>[],
+// ) {
+//   const index = posts.findIndex((p) => p.id === post.id)
+//   const prev = index > 0 ? posts[index - 1] : undefined
+//   const next = index < posts.length - 1 ? posts[index + 1] : undefined
+//   return { index, prev, next }
+// }

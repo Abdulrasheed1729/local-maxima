@@ -50,21 +50,8 @@ const addendumCollection = defineCollection({
     }),
 })
 
-export const devlogCollection = defineCollection({
-  loader: glob({ pattern: ['**/*.md', '**/*.mdx'], base: './src/content/devlog' }),
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      published: z.date(),
-      draft: z.boolean().default(false),
-      description: z.string().optional(),
-      tags: z.array(z.string()).optional().default([]),
-    }),
-})
-
 export const collections = {
   posts: postsCollection,
   home: homeCollection,
   addendum: addendumCollection,
-  devlog: devlogCollection,
 }
